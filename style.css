@@ -68,58 +68,7 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes focus-in-contract-bck {
-  0% {
-    letter-spacing: 1em;
-    -webkit-transform: translateZ(300px);
-    transform: translateZ(300px);
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(12px);
-    transform: translateZ(12px);
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-@keyframes focus-in-contract-bck {
-  0% {
-    letter-spacing: 1em;
-    -webkit-transform: translateZ(300px);
-    transform: translateZ(300px);
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(12px);
-    transform: translateZ(12px);
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    transform: translate();
-  }
-  100% {
-    transform: translate();
-  }
-}
+
 /*
 ========================================
               VARIABLES
@@ -127,7 +76,7 @@
 */
 :root {
   --blue: #38b6ff;
-  --black: #090a0a;
+  --black: #050505;
 }
 /*
 ========================================
@@ -159,28 +108,38 @@ h2 {
 .border {
   border: 1px solid var(--blue);
 }
+p {
+  color: rgba(255, 255, 255, 0.911);
+  font-size: 1.4rem;
+  margin: 20px 0;
+}
 /*
 ========================================
           ANIMATIONS CLASSES
 ========================================
 */
-.slide-left {
-  -webkit-animation: slide-in-left 0.5s ease-out both;
-  animation: slide-in-left 0.5s ease-out both;
+
+.goals.hidden,
+.goals .hidden {
+  opacity: 0;
+  transform: translate();
+  transition: all 1.6s;
 }
-.goals {
-  -webkit-animation: fade linear;
-  -webkit-animation-timeline: view();
-  animation: fade linear both;
-  animation-timeline: view();
-  animation-range: entry 25% cover 50%;
+.goals.show,
+.goals .show {
+  opacity: 1;
+  transform: translate();
 }
-.text-animation {
-  -webkit-animation: focus-in-contract-bck 1s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: focus-in-contract-bck 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation-timeline: view();
-  animation-range: entry 10% cover 35%;
+.description .hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 0.8s;
+}
+.description .show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
 }
 /*
 ========================================
@@ -203,28 +162,34 @@ header {
 }
 
 /*
+=================================================
+                  SECTIONS
+=================================================
+*/
+
+/*
 ========================================
-                SECTIONS
+                DESCRIPTION
 ========================================
 */
-#what {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(15vw + 400px);
+.description {
+  margin: 150px 5% 150px 5%;
+  min-height: 100vh;
+  margin-bottom: 150px;
+}
+.description h2 {
   text-align: center;
+  margin: 80px 0;
+  font-size: 2rem;
 }
-#what h1 {
-  font-size: calc(15px + 3vw);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transform-origin: center;
-}
-
 .containers-padding {
   padding: 20px 30px;
 }
+/*
+========================================
+                GOALS
+========================================
+*/
 .goals {
   padding: 5%;
   display: flex;
@@ -243,14 +208,7 @@ header {
 }
 .top-goals p {
   font-weight: 600;
-}
-.goals ul {
-  padding-left: 30px;
-}
-.goals ul li {
-  color: rgba(255, 255, 255, 0.767);
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  font-size: 2rem;
 }
 
 .top-goals-left {
@@ -268,26 +226,32 @@ header {
 ========================================
 */
 footer {
-  background-color: var(--blue);
+  background-color: black;
   padding: 20px;
   font-size: 18px;
-  color: var(--black);
-}
-footer h3 {
-  font-size: 2rem;
-  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
-  padding: 30px;
+  padding: 5%;
 }
-#footer-containers {
-  text-align: center;
-  margin-inline: auto;
+footer img {
+  width: 50%;
+  max-width: 400px;
 }
-
-#footer-containers span {
-  font-size: 1.2rem;
+footer p.footer-blue {
+  color: var(--blue);
+  font-size: 1.25rem;
+}
+footer #contact p {
+  margin: 0;
   font-weight: 600;
 }
+#contact {
+  margin-top: 40px;
+}
+
 /*
 ========================================
             BREAK POINTS
@@ -311,20 +275,9 @@ footer h3 {
 }
 @media (min-width: 997px) {
   .top-goals {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    padding-left: 10px;
   }
-  .top-goals-left {
-    width: calc(60vw - 20px);
-  }
-  .top-goals-right {
-    width: calc(30vw - 20px);
-  }
-  .top-goals-left {
-    padding-bottom: 0;
-  }
+
   .bottom-goals {
     display: flex;
     justify-content: center;
@@ -332,18 +285,36 @@ footer h3 {
     gap: 20px;
   }
   .bottom-goals-container {
-    height: 750px;
+    height: 850px;
     width: calc(30vw - 20px);
   }
-
+  footer {
+    padding: 2%;
+    flex-direction: row;
+    flex-flow: row-reverse;
+  }
   @media (min-width: 1150px) {
+    .top-goals-left {
+      padding-bottom: 0;
+      width: fit-content;
+    }
     .bottom-goals-container {
-      height: 650px;
+      height: 700px;
     }
   }
   @media (min-width: 1300px) {
     .bottom-goals-container {
-      height: 500px;
+      height: 600px;
+    }
+  }
+  @media (min-width: 1600px) {
+    .bottom-goals-container {
+      height: 450px;
+    }
+  }
+  @media (prefers-reduced-motion) {
+    .hidden {
+      transition: none;
     }
   }
 }
