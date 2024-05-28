@@ -41,7 +41,7 @@ h2 {
 }
 p {
   color: rgba(255, 255, 255, 0.911);
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   margin: 20px 0;
 }
 /*
@@ -147,7 +147,7 @@ header {
 }
 .top-goals p {
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.28rem;
 }
 
 .top-goals-left {
@@ -194,10 +194,26 @@ footer #contact p {
 
 /*
 ========================================
-            BREAK POINTS
+            BREAKPOINTS
 ========================================
 */
+@media (min-width: 320px) {
+  .top-goals p {
+    font-size: 1.4rem;
+  }
+}
+@media (min-width: 576px) {
+  .top-goals p {
+    font-size: 1.8rem;
+  }
+}
 @media (min-width: 768px) {
+  p {
+    font-size: 1.4rem;
+  }
+  .top-goals p {
+    font-size: 2.2rem;
+  }
   footer {
     display: flex;
     justify-content: space-between;
